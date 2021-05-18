@@ -3,26 +3,50 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Unanimo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="robots" content="noindex, nofollow" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- 	<script type="text/javascript" src="./js/scripts.js"></script>
+	<script src="./js/scripts.js"></script>
 </head>
 <body>
 	<section>
 		<header>
 			<div class="banner">
 				<h1>Unanimo</h1>
-				<p>Texte d'intro</p>
+				<p>Générateur de cartes pour Unanimo</p>
 				<div class="actions">
-					<a href="" class="button">Créer une liste</a>
-					<a href="" class="button open-modal" data-modal="rejoindre-partie">Rejoindre une liste</a>
+					<a href="#" class="button" id="nouvelle-partie">Nouvelle partie</a>
+					<a href="#" class="button open-modal" data-modal="rejoindre-partie">Rejoindre une partie</a>
 				</div>
 			</div>
 		</header>
 		<div class="body">
-			<p>Texte</p>
+			<div id="intro">
+				<p class="bigger"><strong>Aucune partie en cours.</strong></p>
+				<p>Créez en une nouvelle ou rejoignez une partie existante.</p>
+			</div>
+			<div id="images"></div>
+			<div class="modal" id="rejoindre-partie">
+			    <div class="overlay"></div>
+			    <div class="content">
+			    	<h1>Rejoindre une partie</h1>
+			        <form action="action-rejoindre-partie.php" method="post">
+						<p class="smaller"><span class="mandatory">*</span> Obligatoire</p>
+						<div>
+					        <label for="code-liste-1">Code de la partie <span class="mandatory">*</span></label>
+					        <div class="flex">
+						        <div class="flex33"><input type="number" id="code-liste-1" name="code-liste-1" required /></div>
+						        <div class="flex33"><input type="number" id="code-liste-2" name="code-liste-2" required /></div>
+						        <div class="flex33"><input type="number" id="code-liste-3" name="code-liste-3" required /></div>
+						    </div>
+					    </div>
+					    <button type="submit" id="submit">Valider</button>
+					</form>
+			   	</div>
+			</div>
 		</div>
 	</div>
 </body>
