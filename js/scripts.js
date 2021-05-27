@@ -2,6 +2,21 @@ $(document).ready(function() {
 
 
 
+    // Modale
+
+    $(".open-modal").click(function(e){
+        e.preventDefault();
+        dataModal = $(this).attr("data-modal");
+        $("#" + dataModal).css({"display":"block"});
+    });
+
+    $(".modal .close, .modal .overlay").click(function(){
+        $(".modal").css({"display":"none"});
+    });
+
+
+
+
     // Nouvelle partie
 
     $("#nouvelle-partie").click(function() {
@@ -25,7 +40,10 @@ $(document).ready(function() {
         });
         new_url = window.location.href.replace( /[\?#].*|$/, "?images=" + url ); 
         window.location.href = new_url;
-    })
+    });
+
+
+
 
 
 
@@ -38,13 +56,12 @@ $(document).ready(function() {
         return results || 0;
     }
 
-    
+    var url = $.urlParam('images')[1];
 
-    var url = $.urlParam('images')[1].split('-');
+    console.log(url);
 
-
-    if (url != "") {
-        console.log("Quelque chose dans l'url");
+    if (url != null) {    
+        var url = url.split('-');
 
         $("#intro").html("<h2>Partie " + $.urlParam('images')[1] + "</h2><p>Partagez ce code ou <a href='" + window.location.href + "' class='copy_button'>l'URL de la page</a> avec les autres joueurs !</p>");
 
@@ -63,8 +80,7 @@ $(document).ready(function() {
         for (var i = 0; i < 3; i++) {
             $("#images .tabs .tabs-content").append("<div id='tab" + [i+1] + "'><img src='./img/" + url[i] + ".jpg' alt='' /></div>");
         }
-    } else {
-        console.log("Rien dans l'url");
+
     }
 
 
@@ -105,21 +121,11 @@ $(document).ready(function() {
 
 
 
-    // Modale
-
-    $(".open-modal").click(function(e){
-        e.preventDefault();
-        dataModal = $(this).attr("data-modal");
-        $("#" + dataModal).css({"display":"block"});
-    });
-
-    $(".modal .close, .modal .overlay").click(function(){
-        $(".modal").css({"display":"none"});
-    });
+    
 
 
 
-
+    // Copier
 
     $('.copy_button').on('click', function(e){
         e.preventDefault();
